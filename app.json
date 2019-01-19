@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "proj-tanzaku-app",
-    "slug": "proj-tanzaku-app",
+    "name": "vcafe-app",
+    "slug": "vcafe-app",
     "privacy": "public",
     "sdkVersion": "27.0.0",
     "platforms": [
@@ -23,10 +23,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "org.tuandn.vcafe"
     },
     "packagerOpts": {
       "config": "rn-cli.config.js"
+    },
+    "android": {
+      "package": "com.tuandn.vcafe",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCNtgt588DW9MK4TmBME6q5T5NhNNLrrKo"
+        }
+      }
     }
   }
 }

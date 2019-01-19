@@ -1,21 +1,62 @@
 <template>
-  <nb-container>
-    <nb-header>
-      <nb-title>Home</nb-title>
-    </nb-header>
-    <nb-content />
-    <nb-footer>
-      <nb-footer-tab>
-        <nb-button>
-          <nb-icon name="home" />
-        </nb-button>
-        <nb-button>
-          <nb-icon name="search" />
-        </nb-button>
-        <nb-button>
-          <nb-icon name="settings" />
-        </nb-button>
-      </nb-footer-tab>
-    </nb-footer>
-  </nb-container>
+    <nb-container :style="{flex:1, backgroundColor: '#fff'}">
+        <nb-header>
+          <nb-left>
+            <nb-button
+              transparent
+              :on-press="() => navigation.navigate('DrawerOpen')"
+            >
+            <nb-icon name="menu" />
+                </nb-button>
+            </nb-left>
+            <nb-body>
+                <nb-title>Users</nb-title>
+            </nb-body>
+            <nb-right />
+        </nb-header>
+        <nb-content>
+            <nb-list>
+                <item
+                    v-if="!loading"
+                    :users="listUsers" />
+                <nb-spinner v-if="loading"></nb-spinner>
+            </nb-list>
+        </nb-content>
+    </nb-container>
 </template>
+
+<script>
+import React from 'react';
+import Item from '../components/item';
+import { Dimensions } from 'react-native';
+import store from '../../store';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
+export default {
+  computed: {
+    listUsers () {
+      return store.state.users;
+    },
+    loading () {
+        return store.state.loadingPosts;
+    }
+  },
+  props: {
+      navigation: Object
+  },
+  created () {
+    this.fetchList(store.state.activeType);
+  },
+  methods: {
+    fetchList (type) {
+      return store.dispatch('FETCH_LIST_DATA', {
+        type: type
+      });
+    }
+  },
+  components: {
+      Item
+  }
+};
+</script>

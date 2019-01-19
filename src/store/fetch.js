@@ -1,11 +1,13 @@
-const baseURL = 'https://atmarkcafe.org';
+import axios from 'axios';
+const baseURL = 'https://reqres.in/api';
 
 export function _fetch (path) {
-  return fetch({
-    method: 'GET',
-    url: `${baseURL}/${path}`
+  return axios.get( `${baseURL}/${path}`, {
+    params: { per_page: 10 }
   })
-  .then((response) => response.json());
+  .then((response) =>
+    response.data.data
+    );
 }
 
 export function fetchPosts (type) {
