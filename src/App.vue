@@ -13,12 +13,16 @@ import HomeScreen from "./screens/home/index.vue";
 import Sidebar from "./screens/home/sidebar.vue";
 import LoginScreen from "./screens/Login.vue";
 import SignUpScreen from "./screens/Register.vue";
+import AddTableScreen from "./screens/AddTable.vue";
+import RemoveTableScreen from "./screens/RemoveTable.vue";
 
 const Drawer = DrawerNavigator(
   {
     Home: { screen: HomeScreen },
     Login: { screen: LoginScreen },
-    SignUp: { screen: SignUpScreen }
+    SignUp: { screen: SignUpScreen },
+    AddTable: { screen: AddTableScreen },
+    RemoveTable: { screen: RemoveTableScreen }
   },
   {
     initialRouteName: "Login",

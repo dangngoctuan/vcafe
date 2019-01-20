@@ -6,6 +6,16 @@
           <nb-text>{{userData.email}}</nb-text>
         </nb-list-item>
         <nb-list-item>
+          <nb-button block :on-press="addTable">
+            <nb-text>Add Table</nb-text>
+          </nb-button>
+        </nb-list-item>
+        <nb-list-item>
+          <nb-button block :on-press="removeTable">
+            <nb-text>Remove Table</nb-text>
+          </nb-button>
+        </nb-list-item>
+        <nb-list-item>
           <nb-text :on-press="logOut">Logout</nb-text>
         </nb-list-item>
       </nb-list>

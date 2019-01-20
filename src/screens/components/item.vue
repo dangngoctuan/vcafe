@@ -4,12 +4,12 @@
       <nb-list-item v-for="(table, index) in arrLeft">
         <nb-left :style="{ marginLeft: 30 }">
           <nb-button rounded class="button">
-            <nb-text>TABLE   {{ table }}</nb-text>
+            <nb-text>TABLE  {{ table }}</nb-text>
           </nb-button>
         </nb-left>
         <nb-right :style="{flex: 1, marginRight: 30}" v-if="checkTable(arrRight[index])">
           <nb-button rounded class="button">
-            <nb-text>TABLE   {{ arrRight[index] }}</nb-text>
+            <nb-text>TABLE  {{ arrRight[index] }}</nb-text>
           </nb-button>
         </nb-right>
       </nb-list-item>
