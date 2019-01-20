@@ -1,15 +1,15 @@
 import axios from 'axios';
-const baseURL = 'https://reqres.in/api';
+const baseURL = 'http://localhost:3000/api/information';
 
-export function _fetch (path) {
+export function _fetch (path, params) {
   return axios.get( `${baseURL}/${path}`, {
-    params: { per_page: 10 }
+    params: params
   })
   .then((response) =>
-    response.data.data
+    response.data
     );
 }
 
-export function fetchPosts (type) {
-  return _fetch(`${type}`);
+export function fetchPosts (type, params) {
+  return _fetch(`${type}`, params);
 }

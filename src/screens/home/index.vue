@@ -5,20 +5,21 @@
             <nb-button
               transparent
               :on-press="() => navigation.navigate('DrawerOpen')"
-            >
-            <nb-icon name="menu" />
-                </nb-button>
+              >
+              <nb-icon name="menu" />
+            </nb-button>
             </nb-left>
             <nb-body>
-                <nb-title>Users</nb-title>
+                <nb-title>COFFEE</nb-title>
             </nb-body>
-            <nb-right />
+            <nb-right/>
         </nb-header>
         <nb-content>
             <nb-list>
                 <item
                     v-if="!loading"
-                    :users="listUsers" />
+                    :tables="listTables"
+                     />
                 <nb-spinner v-if="loading"></nb-spinner>
             </nb-list>
         </nb-content>
@@ -28,30 +29,31 @@
 <script>
 import React from 'react';
 import Item from '../components/item';
-import { Dimensions } from 'react-native';
+import { Dimensions, AsyncStorage } from 'react-native';
 import store from '../../store';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default {
   computed: {
-    listUsers () {
-      return store.state.users;
+    listTables () {
+      return store.state.coffee_tables;
     },
     loading () {
-        return store.state.loadingPosts;
+        return store.state.loadingTables;
     }
   },
   props: {
       navigation: Object
   },
   created () {
-    this.fetchList(store.state.activeType);
+    this.fetchList(store.state.uriTables, store.state.userObj.email);
   },
   methods: {
-    fetchList (type) {
+    fetchList (type, params) {
       return store.dispatch('FETCH_LIST_DATA', {
-        type: type
+        type: type,
+        params: { email: params }
       });
     }
   },

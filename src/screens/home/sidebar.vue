@@ -25,6 +25,7 @@ const resetAction = NavigationActions.reset({
                         index: 0,
                         actions: [NavigationActions.navigate({routeName: "Drawer"})]
                     })
+
 export default {
   props: {
     navigation: {
@@ -33,7 +34,6 @@ export default {
   },
   methods: {
     logOut() {
-      store.dispatch('LOGOUT', () => this.navigation.dispatch(resetAction))
       _this = this
       firebaseApp.auth().signOut().then(function() {
         _this.navigation.navigate("Login")
@@ -41,6 +41,12 @@ export default {
       }).catch(function(error) {
         action.showMessage(error.message)
       })
+    },
+    addTable() {
+      this.navigation.navigate("AddTable")
+    },
+    removeTable() {
+      this.navigation.navigate("RemoveTable")
     }
   },
   computed: {

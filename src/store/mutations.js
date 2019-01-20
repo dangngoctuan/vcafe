@@ -1,10 +1,10 @@
-export function SET_POSTS (state, { users}) {
-  state.loadingPosts = false;
-  state.users = users;
+export function SET_TABLES (state, { coffee_tables}) {
+  state.loadingTables = false;
+  state.coffee_tables = coffee_tables;
 }
 
 export function FETCHING_LISTS (state) {
-  state.loadingPosts = true;
+  state.loadingTables = true;
 }
 
 export function LOGGING_IN (state, status) {

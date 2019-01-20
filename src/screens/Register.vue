@@ -2,7 +2,7 @@
   <nb-container :style="{backgroundColor: '#fff'}">
     <nb-header>
       <nb-body>
-        <nb-title :style="{ alignSelf: 'center', marginTop: 50 }">
+        <nb-title>
           SignUp
         </nb-title>
       </nb-body>
@@ -35,6 +35,9 @@ import { NavigationActions } from 'vue-native-router';
 import store from '../store';
 import {firebaseApp} from '../common/firebaseConfig.js';
 import action from './share/helper.js';
+import axios from 'axios'
+
+const uri = 'http://localhost:3000/api/information/users'
 
 export default {
   props: {
@@ -55,11 +58,13 @@ export default {
       _this.loading = true
       firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((response) => {
-        store.dispatch('LOGIN', {
-          userObj: { email: response.user.email },
-          navigate: this.navigation.navigate
-        });
-        action.showMessage('Register Successfull')
+          axios.get(uri, { params: { email: response.user.email } }).then((res) => {
+            store.dispatch('LOGIN', {
+              userObj: { email: res.data.email },
+              navigate: this.navigation.navigate
+            });
+          })
+          action.showMessage('Register Successfull')
       }).catch(function(error) {
         _this.loading = false
         action.showMessage(error.message)

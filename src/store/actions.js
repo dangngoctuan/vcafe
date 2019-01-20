@@ -2,11 +2,12 @@ import { fetchPosts } from './fetch';
 import { AsyncStorage } from 'react-native';
 
 // ensure data for rendering given list type
-export function FETCH_LIST_DATA ({ commit, dispatch }, { type }) {
+export function FETCH_LIST_DATA ({ commit, dispatch }, { type, params }) {
   commit('FETCHING_LISTS');
-  return fetchPosts(type)
-    .then(users => {
-      return commit('SET_POSTS', { users })
+  // console.log(params)
+  return fetchPosts(type, params)
+    .then(coffee_tables => {
+      return commit('SET_TABLES', { coffee_tables })
     });
 }
 
@@ -24,13 +25,4 @@ export function LOGIN ({ commit, state}, {userObj, navigate}) {
 
 export function SET_USER({commit, state}, {userObj}) {
   return commit('LOGIN_SUCCESFULL', {userObj})
-}
-
-export function LOGOUT ({ commit, state}, callback) {
-  return new Promise((resolve, reject) => {
-      AsyncStorage.removeItem('email').then(() => {
-        callback();
-        resolve();
-      })
-  })
 }

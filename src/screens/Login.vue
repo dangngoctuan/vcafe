@@ -2,7 +2,7 @@
   <nb-container v-if="loaded" :style="{backgroundColor: '#fff'}">
     <nb-header>
       <nb-body>
-        <nb-title :style="{ alignSelf: 'center', marginTop: 50 }">
+        <nb-title>
           Login
         </nb-title>
       </nb-body>
@@ -58,13 +58,14 @@ export default {
     };
   },
   created() {
-    AsyncStorage.getItem('email').then((val) => {
-      if (val) {
-        this.loaded = true
-        this.navigation.navigate('Home')
-        store.dispatch('SET_USER', { userObj: { email: val } })
+    _this = this
+    firebaseApp.auth().onAuthStateChanged(function(user) {
+      if(user) {
+        _this.loaded = true
+        store.dispatch('SET_USER', { userObj: { email: user.email } })
+        _this.navigation.navigate('Home')
       } else {
-        this.loaded = true
+        _this.loaded = true
       }
     })
   },
