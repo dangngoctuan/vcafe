@@ -10,6 +10,6 @@ export function _fetch (path, params) {
     );
 }
 
-export function fetchPosts (type, params) {
+export function fetchDatum (type, params) {
   return _fetch(`${type}`, params);
 }

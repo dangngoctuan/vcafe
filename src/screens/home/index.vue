@@ -8,11 +8,15 @@
               >
               <nb-icon name="menu" />
             </nb-button>
-            </nb-left>
-            <nb-body>
-                <nb-title>COFFEE</nb-title>
-            </nb-body>
-            <nb-right/>
+          </nb-left>
+          <nb-body>
+              <nb-title>ORDER</nb-title>
+          </nb-body>
+          <nb-right>
+            <nb-button transparent :on-press="handleBtnPress">>
+              <nb-icon name="more"/>
+            </nb-button>
+          </nb-right>
         </nb-header>
         <nb-content>
             <nb-list>
@@ -23,6 +27,7 @@
                 <nb-spinner v-if="loading"></nb-spinner>
             </nb-list>
         </nb-content>
+        <footer :navigation="navigation"/>
     </nb-container>
 </template>
 
@@ -31,34 +36,63 @@ import React from 'react';
 import Item from '../components/item';
 import { Dimensions, AsyncStorage } from 'react-native';
 import store from '../../store';
+import Footer from '../components/footer.vue';
+import { ActionSheet } from "native-base";
+import action from '../share/helper.js';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default {
+  data() {
+    return {
+      btnOptions: [
+        { text: "Add Tables", icon: "american-football", iconColor: "#2c8ef4" },
+        { text: "Remove Tables", icon: "analytics", iconColor: "#f42ced" },
+        { text: "Cancel", icon: "close", iconColor: "#25de5b" }
+      ],
+      optionCancelIndex: 3,
+      optionDestructiveIndex: 2,
+      clicked: 0
+    }
+  },
   computed: {
     listTables () {
       return store.state.coffee_tables;
     },
     loading () {
-        return store.state.loadingTables;
+      return store.state.loadingTables;
     }
   },
   props: {
       navigation: Object
   },
   created () {
-    this.fetchList(store.state.uriTables, store.state.userObj.email);
+    action.fetchList(store.state.uriTables, store.state.userObj.email);
   },
   methods: {
-    fetchList (type, params) {
-      return store.dispatch('FETCH_LIST_DATA', {
-        type: type,
-        params: { email: params }
-      });
+    handleBtnPress: function() {
+      _this = this
+      ActionSheet.show(
+        {
+          options: _this.btnOptions,
+          cancelButtonIndex: _this.optionCancelIndex,
+          destructiveButtonIndex: _this.optionDestructiveIndex,
+          title: "Select An Option"
+        },
+        buttonIndex => {
+          _this.clicked = _this.btnOptions[buttonIndex];
+          if (_this.clicked.text === 'Add Tables' ) {
+            return _this.navigation.navigate('AddTable')
+          }
+          if (_this.clicked.text === 'Remove Tables' ) {
+            return _this.navigation.navigate('RemoveTable')
+          }
+        }
+      )
     }
   },
   components: {
-      Item
+      Item, Footer
   }
 };
 </script>

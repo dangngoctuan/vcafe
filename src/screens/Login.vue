@@ -21,8 +21,10 @@
           <nb-spinner v-if="logging_in" size="small" />
           <nb-text>Login </nb-text>
         </nb-button>
-        <nb-button block :on-press="gotoRegister">
-          <nb-text>Don't have an account? Sign Up</nb-text>
+        <nb-button transparent :on-press="gotoRegister">
+          <nb-body>
+            <nb-text>Don't have an account? Sign Up</nb-text>
+          </nb-body>
         </nb-button>
       </view>
       <nb-spinner v-if="loading"></nb-spinner>

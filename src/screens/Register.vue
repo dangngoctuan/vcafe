@@ -20,8 +20,10 @@
         <nb-button block :on-press="handleSignUp">
           <nb-text>Sign Up</nb-text>
         </nb-button>
-        <nb-button block :on-press="gotoLogin">
-          <nb-text>Already have an account? Login</nb-text>
+        <nb-button transparent :on-press="gotoLogin">
+          <nb-body>
+            <nb-text>Already have an account? Login</nb-text>
+          </nb-body>
         </nb-button>
       </view>
       <nb-spinner v-if="loading"></nb-spinner>
@@ -59,10 +61,15 @@ export default {
       firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((response) => {
           axios.get(uri, { params: { email: response.user.email } }).then((res) => {
+            let data = res.data
+            firebaseApp.database().ref('users/' + response.user.uid).set({
+              email: data.email
+            })
             store.dispatch('LOGIN', {
-              userObj: { email: res.data.email },
-              navigate: this.navigation.navigate
-            });
+              userObj: { email: data.email },
+              navigate: this.navigation.navigate('Home')
+            })
+            action.fetchList(store.state.uriTables, data.email);
           })
           action.showMessage('Register Successfull')
       }).catch(function(error) {
