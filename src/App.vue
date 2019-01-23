@@ -20,6 +20,7 @@ import CheckoutScreen from "./screens/TotalBill.vue";
 import RevenueMonthsScreen from "./screens/RevenueMonths.vue";
 import RevenueDaysScreen from "./screens/RevenueDays.vue";
 import MenuScreen from "./screens/Menu.vue";
+import PopularScreen from "./screens/Popular.vue";
 
 const Drawer = DrawerNavigator(
   {
@@ -33,6 +34,7 @@ const Drawer = DrawerNavigator(
     RevenueMonths: { screen: RevenueMonthsScreen },
     RevenueDays: { screen: RevenueDaysScreen },
     Menu: { screen: MenuScreen },
+    Popular: { screen: PopularScreen },
   },
   {
     initialRouteName: "Login",

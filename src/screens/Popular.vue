@@ -9,7 +9,7 @@
       </nb-left>
       <nb-body>
         <nb-title>
-          MENU
+          Popular
         </nb-title>
       </nb-body>
       <nb-right>
@@ -27,7 +27,7 @@
           <nb-text>Price</nb-text>
         </nb-right>
         <nb-right>
-          <nb-text>Quantity</nb-text>
+          <nb-text>Ordered</nb-text>
         </nb-right>
       </nb-item>
       <nb-list-item v-for="menu in listMenus">
@@ -43,7 +43,7 @@
           </nb-right>
           <nb-right>
             <nb-button success>
-              <nb-text>{{ menu.quantity }}</nb-text>
+              <nb-text>{{ menu.ordering }}</nb-text>
             </nb-button>
           </nb-right>
         </nb-item>
@@ -56,11 +56,17 @@
 <script>
 import action from './share/helper.js';
 import store from '../store';
-import image from "../../assets/images/len.png"
+import image from "../../assets/images/len.png";
+import axios from 'axios';
+
+const uri = 'http://localhost:3000/api/information/menus/sort_popular'
+
 export default {
   data() {
     return {
-      image: image
+      image: image,
+      listMenus: [],
+      loading: false
     }
   },
   props: {
@@ -68,16 +74,13 @@ export default {
       type: Object
     }
   },
-  computed: {
-    listMenus () {
-      return store.state.menus
-    },
-    loading () {
-      return store.state.loadingMenus;
-    }
-  },
   created () {
-    action.fetchList(store.state.uriMenus, store.state.userObj.email)
+    let email = store.state.userObj.email
+    axios.get(uri, {
+      params: { email: email }
+    }).then((response) => {
+      this.listMenus = response.data
+    })
   }
 };
 </script>

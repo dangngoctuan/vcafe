@@ -71,7 +71,6 @@ export default {
     axios.get(uri_days, {
       params: { email: email }
     }).then((response) => {
-      console.log(response.data)
       this.listRevenueDays = response.data
     })
   },
