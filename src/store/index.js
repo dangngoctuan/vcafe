@@ -17,14 +17,17 @@ const store = new Vuex.Store({
   state: {
     uriTables: 'coffee_tables',
     uriMenus: 'menus',
-    coffee_tables: [],
+    coffeeTables: [],
     menus: [],
     loadingTables: false,
     loadingMenus: false,
-    userObj: {},
     logging_in: false,
-    table_order: [],
-    table_total_bil: []
+    loadingCheckout: false,
+    userObj: {},
+    list_table_order: [],
+    table_current_order: {},
+    table_total_bill: {}
+
   }
 });
 

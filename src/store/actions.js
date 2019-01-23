@@ -7,8 +7,8 @@ export function FETCH_LIST_DATA ({ commit, dispatch }, { type, params }) {
   if (type == store.state.uriTables) {
     commit('FETCHING_LIST_TABLE');
     return fetchDatum(type, params)
-      .then(coffee_tables => {
-        return commit('SET_TABLES', { coffee_tables })
+      .then(coffeeTables => {
+        return commit('SET_TABLES', { coffeeTables })
       });
   } else {
     commit('FETCHING_LIST_MENU');
@@ -33,4 +33,18 @@ export function LOGIN ({ commit, state}, { userObj, navigate }) {
 
 export function SET_USER({commit, state}, {userObj}) {
   return commit('LOGIN_SUCCESFULL', {userObj})
+}
+
+export function SET_ORDER({commit, state}, {listTableOrder}) {
+  commit('ADD_CURRENT_TABLE_ORDER', { listTableOrder })
+  return commit('ADD_ORDER_FOR_LIST_TABLE', { listTableOrder })
+}
+
+export function REMOVE_ORDER({commit, state}, {listTableOrder}) {
+  commit('REMOVE_CURRENT_TABLE_ORDER', { listTableOrder })
+  return commit('REMOVE_ORDER_OF_LIST_TABLE', { listTableOrder })
+}
+
+export function SET_CHECKOUT({commit, state}, {tableOrder}) {
+  return commit('HANDLE_CHECKOUT_TABLE', { tableOrder })
 }

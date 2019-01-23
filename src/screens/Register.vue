@@ -62,16 +62,13 @@ export default {
         .then((response) => {
           axios.get(uri, { params: { email: response.user.email } }).then((res) => {
             let data = res.data
-            firebaseApp.database().ref('users/' + response.user.uid).set({
-              email: data.email
-            })
+            action.fetchList(store.state.uriTables, data.email)
             store.dispatch('LOGIN', {
               userObj: { email: data.email },
-              navigate: this.navigation.navigate('Home')
+              navigate: this.navigation.navigate
             })
-            action.fetchList(store.state.uriTables, data.email);
+            action.showMessage('Register Successfull')
           })
-          action.showMessage('Register Successfull')
       }).catch(function(error) {
         _this.loading = false
         action.showMessage(error.message)

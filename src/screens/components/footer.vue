@@ -1,11 +1,11 @@
 <template>
   <nb-footer>
     <nb-footer-tab>
-      <nb-button>
+      <nb-button :onPress="() => navigation.navigate('Menu')">
         <nb-icon name="menu" />
         <nb-text>Menu</nb-text>
       </nb-button>
-      <nb-button :onPress="() => navigation.navigate('Home')">
+      <nb-button :onPress="() => navigation.navigate('RevenueMonths')">
         <nb-icon name="apps" />
         <nb-text>Revenue</nb-text>
       </nb-button>

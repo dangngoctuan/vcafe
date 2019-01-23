@@ -16,7 +16,7 @@
     <nb-content padder>
       <nb-form>
         <nb-item>
-          <nb-input placeholder="Input quantity table" v-model="quantity" auto-capitalize="none"/>
+          <nb-input keyboardType="numeric" returnKeyType="done" placeholder="Input quantity table" v-model="quantity" auto-capitalize="none"/>
         </nb-item>
       </nb-form>
       <view :style="{ marginTop: 10 }">

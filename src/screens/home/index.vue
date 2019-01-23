@@ -10,7 +10,7 @@
             </nb-button>
           </nb-left>
           <nb-body>
-              <nb-title>ORDER</nb-title>
+              <nb-title>COFFEE</nb-title>
           </nb-body>
           <nb-right>
             <nb-button transparent :on-press="handleBtnPress">>
@@ -23,6 +23,7 @@
                 <item
                     v-if="!loading"
                     :tables="listTables"
+                    :navigation="navigation"
                      />
                 <nb-spinner v-if="loading"></nb-spinner>
             </nb-list>
@@ -45,7 +46,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default {
   data() {
     return {
-      btnOptions: [
+      tablesOptions: [
         { text: "Add Tables", icon: "american-football", iconColor: "#2c8ef4" },
         { text: "Remove Tables", icon: "analytics", iconColor: "#f42ced" },
         { text: "Cancel", icon: "close", iconColor: "#25de5b" }
@@ -57,14 +58,18 @@ export default {
   },
   computed: {
     listTables () {
-      return store.state.coffee_tables;
+      if (Array.isArray(store.state.coffeeTables)) {
+        return store.state.coffeeTables;
+      } else {
+        return []
+      }
     },
     loading () {
       return store.state.loadingTables;
     }
   },
   props: {
-      navigation: Object
+    navigation: Object
   },
   created () {
     action.fetchList(store.state.uriTables, store.state.userObj.email);
@@ -74,13 +79,13 @@ export default {
       _this = this
       ActionSheet.show(
         {
-          options: _this.btnOptions,
+          options: _this.tablesOptions,
           cancelButtonIndex: _this.optionCancelIndex,
           destructiveButtonIndex: _this.optionDestructiveIndex,
           title: "Select An Option"
         },
         buttonIndex => {
-          _this.clicked = _this.btnOptions[buttonIndex];
+          _this.clicked = _this.tablesOptions[buttonIndex];
           if (_this.clicked.text === 'Add Tables' ) {
             return _this.navigation.navigate('AddTable')
           }
@@ -92,7 +97,7 @@ export default {
     }
   },
   components: {
-      Item, Footer
+    Item, Footer
   }
-};
+}
 </script>

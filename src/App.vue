@@ -15,6 +15,11 @@ import LoginScreen from "./screens/Login.vue";
 import SignUpScreen from "./screens/Register.vue";
 import AddTableScreen from "./screens/AddTable.vue";
 import RemoveTableScreen from "./screens/RemoveTable.vue";
+import OrderScreen from "./screens/Order.vue";
+import CheckoutScreen from "./screens/TotalBill.vue";
+import RevenueMonthsScreen from "./screens/RevenueMonths.vue";
+import RevenueDaysScreen from "./screens/RevenueDays.vue";
+import MenuScreen from "./screens/Menu.vue";
 
 const Drawer = DrawerNavigator(
   {
@@ -22,7 +27,12 @@ const Drawer = DrawerNavigator(
     Login: { screen: LoginScreen },
     SignUp: { screen: SignUpScreen },
     AddTable: { screen: AddTableScreen },
-    RemoveTable: { screen: RemoveTableScreen }
+    RemoveTable: { screen: RemoveTableScreen },
+    Order: { screen: OrderScreen },
+    Checkout: { screen: CheckoutScreen },
+    RevenueMonths: { screen: RevenueMonthsScreen },
+    RevenueDays: { screen: RevenueDaysScreen },
+    Menu: { screen: MenuScreen },
   },
   {
     initialRouteName: "Login",

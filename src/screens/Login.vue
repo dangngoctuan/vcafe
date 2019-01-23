@@ -51,13 +51,13 @@ export default {
       return store.state.logging_in;
     }
   },
-  data: function() {
+  data() {
     return {
       email: '',
       password: '',
       loaded: false,
       loading: false
-    };
+    }
   },
   created() {
     _this = this
