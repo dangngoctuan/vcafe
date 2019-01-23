@@ -37,9 +37,8 @@ import { NavigationActions } from 'vue-native-router';
 import store from '../store';
 import {firebaseApp} from '../common/firebaseConfig.js';
 import action from './share/helper.js';
-import axios from 'axios'
-
-const uri = 'http://localhost:3000/api/information/users'
+import axios from 'axios';
+import constant from '../common/Constant.js';
 
 export default {
   props: {
@@ -60,7 +59,7 @@ export default {
       _this.loading = true
       firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
         .then((response) => {
-          axios.get(uri, { params: { email: response.user.email } }).then((res) => {
+          axios.get(constant.uri_users, { params: { email: response.user.email } }).then((res) => {
             let data = res.data
             action.fetchList(store.state.uriTables, data.email)
             store.dispatch('LOGIN', {

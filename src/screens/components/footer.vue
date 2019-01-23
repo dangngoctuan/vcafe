@@ -13,13 +13,6 @@
         <nb-icon name="navigate" />
         <nb-text>Popular</nb-text>
       </nb-button>
-      <nb-button vertical badge :active="true">
-        <nb-badge>
-          <nb-text>11</nb-text>
-        </nb-badge>
-        <nb-icon name="notifications" :active="true" />
-        <nb-text>Notifi</nb-text>
-      </nb-button>
     </nb-footer-tab>
   </nb-footer>
 </template>

@@ -44,8 +44,7 @@ import store from '../store';
 import action from './share/helper.js';
 import axios from 'axios';
 import { ActionSheet } from "native-base";
-
-const uri_days = 'http://localhost:3000/api/information/users/revenue_days'
+import constant from '../common/Constant.js';
 
 export default {
   data() {
@@ -68,7 +67,7 @@ export default {
   },
   created () {
     let email = store.state.userObj.email
-    axios.get(uri_days, {
+    axios.get(constant.uri_revenue_days, {
       params: { email: email }
     }).then((response) => {
       this.listRevenueDays = response.data

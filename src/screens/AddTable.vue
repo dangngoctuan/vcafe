@@ -34,8 +34,7 @@ import { NavigationActions } from 'vue-native-router';
 import store from '../store';
 import action from './share/helper.js';
 import axios from 'axios';
-
-const uri = 'http://localhost:3000/api/information/coffee_tables/add_tables'
+import constant from '../common/Constant.js';
 
 export default {
   data() {
@@ -54,7 +53,7 @@ export default {
       this.loading = true
       _this = this
       let email = store.state.userObj.email
-      axios.get(uri, {
+      axios.get(constant.uri_add_tables, {
         params: { email: email, quantity: _this.quantity }
       }).then((response) => {
         _this.loading = false

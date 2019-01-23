@@ -84,9 +84,7 @@
 import store from '../store';
 import action from './share/helper.js';
 import axios from 'axios';
-
-const uri = 'http://localhost:3000/api/information/total_bills'
-const uri_checkout = 'http://localhost:3000/api/information/total_bills/checkout'
+import constant from '../common/Constant.js';
 
 export default {
   data() {
@@ -109,7 +107,7 @@ export default {
   created () {
     let table_total_bill = store.state.table_total_bill
     let email = store.state.userObj.email
-    axios.get(uri, {
+    axios.get(constant.uri_total_bills, {
       params: { email: email, table_total_bill: table_total_bill }
     }).then((response) => {
       let data = response.data
@@ -123,7 +121,7 @@ export default {
       _this = this
       let email = store.state.userObj.email
       let table_total_bill = store.state.table_total_bill
-      axios.get(uri_checkout,
+      axios.get(constant.uri_checkout,
         { params: { email: email, table_total_bill: table_total_bill, total_bills: _this.total }
       }).then((response) => {
         _this.loaded = false
@@ -138,7 +136,7 @@ export default {
       store.dispatch('REMOVE_ORDER', {
         listTableOrder: this.currentTableOrder
       })
-      action.showMessage('Cancel Order')
+      action.showMessage('Cancel Checkout')
       this.navigation.navigate('Home')
     }
   }

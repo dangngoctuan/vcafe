@@ -58,8 +58,7 @@ import action from './share/helper.js';
 import store from '../store';
 import image from "../../assets/images/len.png";
 import axios from 'axios';
-
-const uri = 'http://localhost:3000/api/information/menus/sort_popular'
+import constant from '../common/Constant.js';
 
 export default {
   data() {
@@ -76,7 +75,7 @@ export default {
   },
   created () {
     let email = store.state.userObj.email
-    axios.get(uri, {
+    axios.get(constant.uri_sort_popular, {
       params: { email: email }
     }).then((response) => {
       this.listMenus = response.data

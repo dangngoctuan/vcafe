@@ -76,8 +76,8 @@ import {firebaseApp} from '../common/firebaseConfig.js';
 import action from './share/helper.js';
 import axios from 'axios';
 import { ActionSheet } from "native-base";
+import constant from '../common/Constant.js';
 
-const uri = 'http://localhost:3000/api/information/orders'
 
 export default {
   data() {
@@ -128,7 +128,7 @@ export default {
       this.loaded = true
       _this = this
       let email = store.state.userObj.email
-      axios.get(uri,
+      axios.get(constant.uri_orders,
         { params: { email: email, list_menus: _this.checkedMenus, current_table: _this.currentTableOrder  }
       }).then((response) => {
         action.showMessage(response.data.message)
