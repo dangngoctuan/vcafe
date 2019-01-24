@@ -13,7 +13,7 @@
               <nb-title>COFFEE</nb-title>
           </nb-body>
           <nb-right>
-            <nb-button transparent :on-press="handleBtnPress">>
+            <nb-button transparent :on-press="handleBtnPress">
               <nb-icon name="more"/>
             </nb-button>
           </nb-right>
