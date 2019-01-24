@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = 'http://localhost:3000/api/information';
+const baseURL = 'https://evening-eyrie-68414.herokuapp.com/api/information';
 
 export function _fetch (path, params) {
   return axios.get( `${baseURL}/${path}`, {

@@ -1,11 +1,11 @@
 export default {
-  uri_add_tables: 'http://localhost:3000/api/information/coffee_tables/add_tables',
-  uri_orders: 'http://localhost:3000/api/information/orders',
-  uri_sort_popular: 'http://localhost:3000/api/information/menus/sort_popular',
-  uri_users: 'http://localhost:3000/api/information/users',
-  uri_remove_tables: 'http://localhost:3000/api/information/coffee_tables/remove_tables',
-  uri_revenue_days: 'http://localhost:3000/api/information/users/revenue_days',
-  uri_revenue_months: 'http://localhost:3000/api/information/users/revenue_months',
-  uri_total_bills: 'http://localhost:3000/api/information/total_bills',
-  uri_checkout: 'http://localhost:3000/api/information/total_bills/checkout'
+  uri_add_tables: 'https://evening-eyrie-68414.herokuapp.com/api/information/coffee_tables/add_tables',
+  uri_orders: 'https://evening-eyrie-68414.herokuapp.com/api/information/orders',
+  uri_sort_popular: 'https://evening-eyrie-68414.herokuapp.com/api/information/menus/sort_popular',
+  uri_users: 'https://evening-eyrie-68414.herokuapp.com/api/information/users',
+  uri_remove_tables: 'https://evening-eyrie-68414.herokuapp.com/api/information/coffee_tables/remove_tables',
+  uri_revenue_days: 'https://evening-eyrie-68414.herokuapp.com/api/information/users/revenue_days',
+  uri_revenue_months: 'https://evening-eyrie-68414.herokuapp.com/api/information/users/revenue_months',
+  uri_total_bills: 'https://evening-eyrie-68414.herokuapp.com/api/information/total_bills',
+  uri_checkout: 'https://evening-eyrie-68414.herokuapp.com/api/information/total_bills/checkout'
 }

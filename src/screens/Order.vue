@@ -126,9 +126,13 @@ export default {
       }
     },
     orderMenus() {
-      this.loaded = true
       _this = this
+      _this.loaded = true
       let email = store.state.userObj.email
+      if (_this.checkedMenus.length == 0) {
+        _this.loaded = false
+        return action.showMessage('Not choice menu')
+      }
       axios.get(constant.uri_orders,
         { params: { email: email, list_menus: _this.checkedMenus, current_table: _this.currentTableOrder  }
       }).then((response) => {

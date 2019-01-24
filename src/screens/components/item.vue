@@ -1,23 +1,25 @@
 <template>
   <nb-container>
-    <nb-content>
-      <nb-list-item v-for="(table, index) in arrLeft">
-        <nb-left :style="{ marginLeft: 30 }">
-          <nb-button
-            :class="table.active ? 'disable' : ''" rounded class="button"
-            :on-press="() => { handleTablePress(table) }">
-            <nb-text>TABLE  {{ table.ordering }}</nb-text>
-          </nb-button>
-        </nb-left>
-        <nb-right :style="{flex: 1, marginRight: 30}" v-if="checkTable(arrRight[index])">
-          <nb-button
-            :class="arrRight[index].active ? 'disable' : ''" rounded class="button"
-            :on-press="() => { handleTablePress(arrRight[index]) }">
-            <nb-text>TABLE  {{ arrRight[index].ordering }}</nb-text>
-          </nb-button>
-        </nb-right>
-      </nb-list-item>
-    </nb-content>
+    <scroll-view>
+      <nb-content>
+        <nb-list-item v-for="(table, index) in arrLeft">
+          <nb-left :style="{ marginLeft: 30 }">
+            <nb-button
+              :class="table.active ? 'disable' : ''" rounded class="button"
+              :on-press="() => { handleTablePress(table) }">
+              <nb-text>TABLE  {{ table.ordering }}</nb-text>
+            </nb-button>
+          </nb-left>
+          <nb-right :style="{flex: 1, marginRight: 30}" v-if="checkTable(arrRight[index])">
+            <nb-button
+              :class="arrRight[index].active ? 'disable' : ''" rounded class="button"
+              :on-press="() => { handleTablePress(arrRight[index]) }">
+              <nb-text>TABLE  {{ arrRight[index].ordering }}</nb-text>
+            </nb-button>
+          </nb-right>
+        </nb-list-item>
+      </nb-content>
+    </scroll-view>
   </nb-container>
 </template>
 
