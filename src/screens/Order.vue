@@ -39,7 +39,7 @@
             <nb-text>{{ menu.beverages }}</nb-text>
           </nb-body>
           <nb-right>
-            <nb-text>{{ menu.price }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(menu.price) }}</nb-text>
           </nb-right>
           <nb-right>
             <nb-button success>
@@ -94,7 +94,8 @@ export default {
       optionDestructiveIndex: 3,
       clicked: 0,
       plusAndMenus: true,
-      currentTableOrder: store.state.table_current_order
+      currentTableOrder: store.state.table_current_order,
+      action: action
     }
   },
   props: {

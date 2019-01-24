@@ -28,7 +28,7 @@
             <nb-text></nb-text>
           </nb-right>
           <nb-right>
-            <nb-text>{{ total }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(total) }}</nb-text>
           </nb-right>
         </nb-item>
       </nb-list-item>
@@ -55,7 +55,7 @@
             <nb-text>{{ order.beverages }}</nb-text>
           </nb-body>
           <nb-right>
-            <nb-text>{{ order.price }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(order.price) }}</nb-text>
           </nb-right>
           <nb-right>
             <nb-button success>
@@ -92,6 +92,7 @@ export default {
       listOrders: [],
       total: '',
       loaded: false,
+      action: action
     }
   },
   props: {

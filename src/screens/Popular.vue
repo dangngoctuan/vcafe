@@ -39,7 +39,7 @@
             <nb-text>{{ menu.beverages }}</nb-text>
           </nb-body>
           <nb-right>
-            <nb-text>{{ menu.price }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(menu.price) }}</nb-text>
           </nb-right>
           <nb-right>
             <nb-button success>
@@ -65,7 +65,8 @@ export default {
     return {
       image: image,
       listMenus: [],
-      loading: false
+      loading: false,
+      action: action
     }
   },
   props: {

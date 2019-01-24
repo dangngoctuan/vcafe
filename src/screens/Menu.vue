@@ -36,7 +36,7 @@
             <nb-text>{{ menu.beverages }}</nb-text>
           </nb-body>
           <nb-right>
-            <nb-text>{{ menu.price }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(menu.price) }}</nb-text>
           </nb-right>
         </nb-item>
       </nb-list-item>
@@ -52,7 +52,8 @@ import image from "../../assets/images/len.png"
 export default {
   data() {
     return {
-      image: image
+      image: image,
+      action: action
     }
   },
   props: {

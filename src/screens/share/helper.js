@@ -13,4 +13,8 @@ export default {
       params: { email: params }
     });
   },
+  handleFormatNumber(number) {
+    let customFormatNumber = new Intl.NumberFormat()
+    return customFormatNumber.format(number)
+  }
 }

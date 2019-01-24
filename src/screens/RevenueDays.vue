@@ -30,7 +30,7 @@
             <nb-text>{{ revenue.day }}</nb-text>
           </nb-left>
           <nb-right>
-            <nb-text>{{ revenue.total }}</nb-text>
+            <nb-text>{{ action.handleFormatNumber(revenue.total) }}</nb-text>
           </nb-right>
         </nb-item>
       </nb-list-item>
@@ -58,6 +58,7 @@ export default {
       optionCancelIndex: 2,
       optionDestructiveIndex: 1,
       clicked: 0,
+      action: action
     }
   },
   props: {
