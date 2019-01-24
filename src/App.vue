@@ -21,6 +21,7 @@ import RevenueMonthsScreen from "./screens/RevenueMonths.vue";
 import RevenueDaysScreen from "./screens/RevenueDays.vue";
 import MenuScreen from "./screens/Menu.vue";
 import PopularScreen from "./screens/Popular.vue";
+import ResetPasswordScreen from "./screens/ResetPassword.vue";
 
 const Drawer = DrawerNavigator(
   {
@@ -35,6 +36,7 @@ const Drawer = DrawerNavigator(
     RevenueDays: { screen: RevenueDaysScreen },
     Menu: { screen: MenuScreen },
     Popular: { screen: PopularScreen },
+    ResetPassword: { screen: ResetPasswordScreen },
   },
   {
     initialRouteName: "Login",

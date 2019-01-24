@@ -3,10 +3,14 @@
     <nb-content :style="stylesObj.drawerContent" :bounces="false">
       <nb-list>
         <nb-list-item>
-          <nb-text>{{userData.email}}</nb-text>
+          <nb-button transparent success>
+            <nb-text>{{userData.email}}</nb-text>
+          </nb-button>
         </nb-list-item>
         <nb-list-item>
-          <nb-text :on-press="logOut">Logout</nb-text>
+          <nb-button bordered warning>
+            <nb-text :on-press="logOut">Logout</nb-text>
+          </nb-button>
         </nb-list-item>
       </nb-list>
     </nb-content>

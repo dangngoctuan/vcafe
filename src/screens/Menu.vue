@@ -26,9 +26,6 @@
         <nb-right>
           <nb-text>Price</nb-text>
         </nb-right>
-        <nb-right>
-          <nb-text>Quantity</nb-text>
-        </nb-right>
       </nb-item>
       <nb-list-item v-for="menu in listMenus">
         <nb-item>
@@ -40,11 +37,6 @@
           </nb-body>
           <nb-right>
             <nb-text>{{ menu.price }}</nb-text>
-          </nb-right>
-          <nb-right>
-            <nb-button success>
-              <nb-text>{{ menu.quantity }}</nb-text>
-            </nb-button>
           </nb-right>
         </nb-item>
       </nb-list-item>

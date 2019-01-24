@@ -12,6 +12,8 @@
           REMOVE TABLE
         </nb-title>
       </nb-body>
+      <nb-right>
+      </nb-right>
     </nb-header>
     <nb-content padder>
       <nb-form>

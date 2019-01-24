@@ -21,6 +21,11 @@
           <nb-spinner v-if="logging_in" size="small" />
           <nb-text>Login </nb-text>
         </nb-button>
+        <nb-button transparent :on-press="gotoResetPassword">
+          <nb-body>
+            <nb-text>Forgot Password?</nb-text>
+          </nb-body>
+        </nb-button>
         <nb-button transparent :on-press="gotoRegister">
           <nb-body>
             <nb-text>Don't have an account? Sign Up</nb-text>
@@ -88,6 +93,9 @@ export default {
     },
     gotoRegister() {
       this.navigation.navigate('SignUp');
+    },
+    gotoResetPassword() {
+      this.navigation.navigate('ResetPassword');
     }
   }
 };
